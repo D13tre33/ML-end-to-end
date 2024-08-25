@@ -8,6 +8,8 @@ This project utilizes a Machine Learning model to detect credit card fraud. The 
 - **docker-compose.yml**: Defines the services, networks, and volumes for Docker.
 - **k8s-deployment.yaml**: Kubernetes deployment configuration.
 - **k8s-service.yaml**: Kubernetes service configuration.
+- **server.py**: FastAPI server for model deployment.
+- **train_model.py**: Script to train and save the ML model.
 
 ## Getting Started
 
@@ -18,17 +20,39 @@ To get started with this project, you will need to have Docker and Kubernetes in
    git clone <repository-url>
    ```
 
-2. **Build the Docker image**
+2. **Generate the Model**
+   
+   Ensure you have the dataset `creditcard.csv` in the project directory.
+   
+   ```bash
+   python train_model.py
+   ```
+
+3. **Run the FastAPI Server**
+   
+   Ensure you have the required Python packages installed:
+   
+   ```bash
+   pip install -r requirements.txt
+   ```
+   
+   Start the server:
+   
+   ```bash
+   python server.py
+   ```
+
+4. **Build the Docker image**
    ```bash
    docker build -t credit-card-fraud-detection .
    ```
 
-3. **Run the application using Docker Compose**
+5. **Run the application using Docker Compose**
    ```bash
    docker-compose up
    ```
 
-4. **Deploy to Kubernetes**
+6. **Deploy to Kubernetes**
    ```bash
    kubectl apply -f k8s-deployment.yaml
    kubectl apply -f k8s-service.yaml

@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
+import joblib
 
 Fraud_data = pd.read_csv('creditcard.csv')
 Fraud_data.head()
@@ -64,3 +65,5 @@ test_data_accuracy = accuracy_score(x_test_prediction, y_test)
 
 print('Accuracy score on Test Data : ', test_data_accuracy)
 
+# Save the trained model
+joblib.dump(model, 'model.joblib')
